@@ -1,0 +1,47 @@
+.formbook1{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.formbook2{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.blur {
+    filter: blur(5px); /* Adjust blur intensity as needed */
+  }
+  
+  .book-container {
+    position: fixed;
+    flex-direction: column;
+    gap: 20px;
+    color: skyblue;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    z-index: 999; /* Ensure Book component appears above blurred background */
+  }
+
+  .inputbook{
+    height: 40px;
+    width: 300px;
+    background: none;
+  }
+
+  .selectbook{
+    background: none;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }

@@ -1,0 +1,24 @@
+.aboutus2{
+    background-image: url('../images/img-3.jpg');
+    background-size: cover;
+    text-align: center;
+    height: 500px;
+    margin-top: -20px;
+}
+
+.aboutus2 h1{
+    font-size: 100px;
+    color: skyblue;
+}
+
+.aboutus3{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    padding: 20px 120px 20px;
+}
+
+.aboutus3 h2{
+    font-size: 20px;
+}

@@ -7,12 +7,21 @@ const Register = () => {
     const [UserName,usernamechange] = useState("");
     const [Email,emailchange] = useState("");
     const [password,passwordchange] = useState("");
+    const [error, setError] = useState('');
+    const [error2, setError2] = useState('');
 
     const navigate = useNavigate();
 
     const handlesubmit=(e)=>{
         e.preventDefault();
-        let regobj={UserName,Email,password};
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{6,}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+        const passwardtest = regex.test(password);
+        const emailtest = emailRegex.test(Email);
+        if(passwardtest){setError('');}
+        if(emailtest){setError2('')}
+        if(regex.test(password) && emailRegex.test(Email)){
+            let regobj={UserName,Email,password};
         console.log(regobj);
         fetch("http://localhost:54850/api/Authentication/SignUp",{
             method:"POST",
@@ -39,7 +48,14 @@ const Register = () => {
         }).catch((err)=>{
             console.log("Failed")
         });
+        setError('');
+        setError2('');
+    }    
+     else {
+        if(!passwardtest){setError('passward must contain uppercase and lowercase letters,digits,non-alphanumeric characters and atleast 6 letters');}
+        if(!emailtest){setError2('Please enter a valid email address')}
     }
+}
 
     const back=(x)=>{
         navigate('/login')
@@ -47,6 +63,7 @@ const Register = () => {
 
   return (
     <div className='homepage'>
+        <h1 style={{position:'absolute',paddingTop:'20px',paddingLeft:'590px'}}>-- TRVL Travels --</h1>
         <div className="offset-lg-3 col-lg-6" style={{paddingTop: "150px"}}>
             <form className="container" onSubmit={handlesubmit}>
                 <div className="card" style={{backgroundColor : "lightblue",color:"white"}}>
@@ -65,12 +82,18 @@ const Register = () => {
                                 <div className="form-group">
                                     <label>Email<span className="errmsg">*</span></label>
                                     <input value={Email} onChange={u=>emailchange(u.target.value)} type="text"  className="form-control"></input>
+                                    {error2 && (
+                                    <div className="error-message">{error2}</div>
+                                    )}
                                 </div>
                             </div>
                             <div className="col-lg-6">
                                 <div className="form-group">
                                     <label>Password<span className="errmsg">*</span></label>
                                     <input value={password} onChange={u=>passwordchange(u.target.value)}  type="password" className="form-control"></input>
+                                    {error && (
+                                    <div className="error-message">{error}</div>
+                                    )}
                                 </div>
                             </div>
                         </div>

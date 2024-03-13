@@ -7,8 +7,9 @@ const Login = () => {
 
     const[UserName,UserNameUpdate] = useState('');
     const[password,passwordUpdate] = useState('');
-
     const usenavigate=useNavigate();
+
+    
 
     const proceedLogin = (e)=>{
         e.preventDefault();
@@ -40,12 +41,14 @@ const Login = () => {
         }).catch((err)=>{
             usenavigate('/login')
             console.log("Failed");
+            alert("Login Failed")
         });
     }
 
   return (
     <div className='homepage'>
     <div className="row" >
+        <h1 style={{position:'absolute',paddingTop:'20px'}}>-- TRVL Travels --</h1>
        <div className="offset-lg-3 col-lg-6" style={{paddingTop: "150px"}} >
             <form className="container"  onSubmit={proceedLogin}>
                 <div className="card" style={{backgroundColor : "lightblue",color:"white"}}>
