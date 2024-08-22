@@ -73,7 +73,7 @@ export default function Home() {
                 DCId : DcId,
             })
         })
-
+                                    
         if(x)
         {
             toast.success('Succesfully Manifested!!!', {position: "top-right",autoClose: 5000,hideProgressBar: false,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,theme: "colored",});
