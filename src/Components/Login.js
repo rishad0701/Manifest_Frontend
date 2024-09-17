@@ -12,6 +12,7 @@ const Login = () => {
     
 
     const proceedLogin = (e)=>{
+        
         e.preventDefault();
         let regobj={UserName,password};
         fetch("http://localhost:54850/api/Authentication/LogIn",{

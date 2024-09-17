@@ -19,7 +19,7 @@ export default function Home() {
             usenavigate('/login');
         }
         let jwt = sessionStorage.getItem('Token');
-
+            
         const getDC = async ()=>{
             await fetch("http://localhost:54850/api/Manifest/DCNames",{headers:{
                 'Authorization' : 'bearer '+jwt
@@ -83,7 +83,6 @@ export default function Home() {
         else{
             toast.error('Manifest Failed!!!!', {position: "top-right",autoClose: 5000,hideProgressBar: false,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,theme: "colored",});
         }
-
     }
 
   return (
